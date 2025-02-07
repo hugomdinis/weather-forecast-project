@@ -17,7 +17,7 @@ export const Home = () => {
       const data = await getWeather(city);
       setWeather(data);
     } catch (err) {
-      setError("City not found or API error.");
+      setError("City not found");
     }
   };
 
