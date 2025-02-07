@@ -9,6 +9,7 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   padding: 10px;
+  margin-bottom: 15px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -28,6 +29,7 @@ const Input = styled.input`
 const Button = styled.button`
   padding: 10px;
   margin-left: 10px;
+  margin-bottom: 15px;
   background-color: rgba(21, 101, 192, 0.5);
   color: white;
   border: none;

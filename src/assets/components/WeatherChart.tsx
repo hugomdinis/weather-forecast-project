@@ -24,7 +24,6 @@ const CustomBarLabel = (props: any) => {
 export const WeatherChart: React.FunctionComponent<WeatherChartProps> = ({ forecast, unit }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-    // Atualiza isMobile quando a janela é redimensionada
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
@@ -34,7 +33,6 @@ export const WeatherChart: React.FunctionComponent<WeatherChartProps> = ({ forec
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // Função para formatar as datas
     const formatDate = (date: string) => {
         const dateObj = new Date(date);
         return isMobile ? dateObj.getDate().toString() : date;
