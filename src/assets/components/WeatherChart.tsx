@@ -1,28 +1,45 @@
 
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { BarChart, Bar, ResponsiveContainer, XAxis} from "recharts";
 
 interface WeatherChartProps {
     forecast: { date: string; temperature: number}[];
     unit: "C" | "F";
 }
 
+const CustomBarLabel = (props: any) => {
+    const { x, y, width, value, unit } = props;
+    return (
+        <text 
+            x={x + width / 2} 
+            y={y - 5} 
+            fill="#000" 
+            fontSize={12} 
+            textAnchor="middle"
+        >
+            {value.toFixed(1)}°{unit}
+        </text>
+    );
+};
+
 export const WeatherChart: React.FunctionComponent<WeatherChartProps> = ({ forecast, unit}) => {
     return(
         <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={forecast}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date"/>
-                <YAxis 
-                    label={{ value: `Temperatura (°${unit})`, angle: -90, position: "insideLeft" }}
+            <BarChart 
+                data={forecast} 
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
+                <XAxis 
+                    dataKey="date" 
+                    tick={{ fill: "#666" }} 
+                    label={{ value: "Days", position: "insideBottom", offset: -5 }}
                 />
-                <Tooltip 
-                contentStyle={{ backgroundColor: "#fff", color: "#666", border: "1px solid #ccc" }} 
-                itemStyle={{ color: "#666" }} 
-                labelStyle={{ color: "#666" }} 
-                formatter={(value) => [`${value}°${unit}`, "Temperature"]}
+                <Bar 
+                    dataKey="temperature" 
+                    fill="#007bff" 
+                    barSize={30} 
+                    label={<CustomBarLabel unit={unit} />}
                 />
-                <Line type="monotone" dataKey="temperature" stroke="#007bff" strokeWidth={2} />
-            </LineChart>
+            </BarChart>
         </ResponsiveContainer>
     );
 };
