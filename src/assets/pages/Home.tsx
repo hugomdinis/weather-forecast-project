@@ -21,7 +21,7 @@ export const Home = () => {
     }
   };
 
-  // Function to switch between Celsius and Fahrenheit
+  // Funcao para alternar entre Celsius e Fahrenheit
   const toggleUnit = () => {
     setUnit(unit == "C" ? "F" : "C")
   };

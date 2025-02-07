@@ -21,7 +21,7 @@ export const WeatherMap: React.FunctionComponent<WeatherMapProps> = ({ lat, lon 
   };
 
 
-  //Store viewState dynamically
+  //Initial map state
   const [viewState, setViewState] = useState({
     longitude: lon,
     latitude: lat,
@@ -31,7 +31,7 @@ export const WeatherMap: React.FunctionComponent<WeatherMapProps> = ({ lat, lon 
     padding: defaultPadding,
   });
 
-  //Update map center when lat/lon change (when a new city is searched)
+  //Dar update ao mapa quando a localização muda
   useEffect(() => {
     setViewState((prev) => ({
       ...prev,
@@ -46,7 +46,7 @@ export const WeatherMap: React.FunctionComponent<WeatherMapProps> = ({ lat, lon 
     <MapWrapper>
       <Map
         {...viewState}
-        onMove={(evt) => setViewState(evt.viewState)} //Allows interaction while keeping updates dynamic
+        onMove={(evt) => setViewState(evt.viewState)} //Permitem que o mapa seja movido
         style={{ width: "100%", height: "100%" }}
         mapStyle={mapStyleUrl}>
 

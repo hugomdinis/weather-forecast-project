@@ -31,7 +31,7 @@ export const getWeather = async (city: string) => {
     const data = response.data as WeatherResponse;
     const forecastData = data.list;
 
-    // Criar um objeto para armazenar previsões diárias
+    // Criar um objeto para armazenar as previsões diárias
     const dailyForecast: Record<string, { date: string; temperature: number; weather: string; icon: string }> = {};
 
     forecastData.forEach((entry: WeatherEntry) => {
